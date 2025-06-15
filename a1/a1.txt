@@ -1,0 +1,22 @@
+==Q1==
+/home/lydaniel79
+
+==Q2==
+iomem
+meminfo
+cpuinfo
+
+==Q3==
+NAME="Ubuntu"
+VERSION="20.04.6 LTS (Focal Fossa)"
+/etc/os-release
+
+==Q4==
+A.
+  13354 161.0
+  12421 237.0
+  11138 236.0
+B.
+  13290 161.0
+  12956 237.0
+  11278 236.0

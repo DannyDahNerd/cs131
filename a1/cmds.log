@@ -1,0 +1,10 @@
+echo $HOME
+
+ls /proc | grep "mem"
+ls /proc | grep "cpu"
+
+ls /etc | grep "os"
+cat /etc/os-release
+
+grep '2019-04-02' 2019-04.csv | cut -d ',' -f8 | sort | uniq -c | sort -r | head -3
+grep '2019-04-10' 2019-04.csv | cut -d ',' -f8 | sort | uniq -c | sort -r | head -3
