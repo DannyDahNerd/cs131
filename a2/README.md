@@ -29,3 +29,6 @@ chmod 700 datacollector.sh
 
 ## enter the url
 ![enter_url](images/enter_url.png)
+
+## enter the column indices
+![col_index](images/col_index.png)
