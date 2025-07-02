@@ -35,7 +35,7 @@ chmod 700 datacollector.sh
 
 ##
 The script has created a folder 'data' containing the zip, the csv files, and the md summary files
-![new_directory](new_dir.png)
+![new_directory](images/new_dir.png)
 
 This is done so that if you want to delete anything relating, a simple
 ```bash
