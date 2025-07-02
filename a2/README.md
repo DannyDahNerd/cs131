@@ -35,6 +35,8 @@ chmod 700 datacollector.sh
 
 ##
 The script has created a folder 'data' containing the zip, the csv files, and the md summary files
+![new_directory](new_dir.png)
+
 This is done so that if you want to delete anything relating, a simple
 ```bash
 rm data -r
@@ -43,4 +45,4 @@ command can be used to swiftly delete the data
 
 The data appears as such:
 
-![red_sum](images/red_sum.png)
+![red_sum](images/sum_red.png)
