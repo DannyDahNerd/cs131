@@ -9,7 +9,7 @@ cd data
 
 filename=$(basename "$url")
 #use curl to extract it
-curl -L -O "$url"
+curl -O "$url"
 
 #unzip if zipped
 if [[ "$filename" == *.zip ]]; then
@@ -21,16 +21,9 @@ else
         csvfiles="$filename"
 fi
 
-#prompt for columns
-echo "Enter the column indices (1-based) of numerical columns separated by space:"
-read cols
-# takes cols and reads it into an array called numcols
-numcols=($cols)
-
-
 #for each csvfile in the zip (or just 1 if it was the single csv file)
 for csvfile in $csvfiles; do
-        # get header and clean it
+	# get header (first line) and clean it
         header=$(head -n1 "$csvfile")
 
 
@@ -38,6 +31,7 @@ for csvfile in $csvfiles; do
         cleanheader=$(echo "$header" | sed 's/"//g')
 
         #detect delimiter
+	#use -q quiet option to not clutter terminal
         if echo "$cleanheader" | grep -q ";" ; then
                 delim=";"
         elif echo"$cleanheader" | grep -q "\t"; then
@@ -47,6 +41,8 @@ for csvfile in $csvfiles; do
         fi
 
         #get all features
+	#take the header, split by the delim, and essentially split each feature into a separate line 
+	#to store into features array
         features=($(echo "$cleanheader" | awk -F"$delim" '{for(i=1; i<=NF; i++) print $i}'))
 
         #prints all features while also keeping track of which one is the longest       
@@ -60,6 +56,12 @@ for csvfile in $csvfiles; do
                 #i indexes at 0, want to start at 1
                 echo "$((i+1)). ${features[$i]}"
         done
+
+	#prompt for columns
+	echo "Enter the column indicies of numerical columns separated by space:"
+	read cols
+	# takes cols and reads it into an array called numcols
+	numcols=($cols)
 
         #helps format the dash to match the features
         #creates a buunch of spaces to max maxlen
@@ -85,7 +87,7 @@ for csvfile in $csvfiles; do
                 index=$((col - 1))
                 colname=${features[$index]}
                 colname=$(echo "$colname" | sed 's/"//g')
-                values=$(tail -n +2 "$csvfile" | cut -d"$delim" -f"$col" | sed '/^$/d')
+                values=$(tail +2 "$csvfile" | cut -d"$delim" -f"$col" | sed '/^$/d')
                 min=$(echo "$values" | awk 'NR==1 {min=$1} $1<min{min=$1} END{print min}')
                 max=$(echo "$values" | awk 'NR==1 {max=$1} $1>max{max=$1} END{print max}')
                 mean=$(echo "$values" | awk '{sum+=$1} END{if (NR>0) print sum/NR; else print 0}')
