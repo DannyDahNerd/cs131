@@ -27,5 +27,5 @@ chmod 700 datacollector.sh
 ## running the command
 ![run_command](images/img1.png)
 
-##enter the url
+## enter the url
 ![enter_url](images/enter_url.png)
