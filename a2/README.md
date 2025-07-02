@@ -22,4 +22,7 @@ sudo apt-get install unzip
 chmod 700 datacollector.sh
 ```
 
+# Demo
+
+## running the command
 ![run_command](images/img1.png)
