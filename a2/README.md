@@ -21,3 +21,5 @@ sudo apt-get install unzip
 ```bash
 chmod 700 datacollector.sh
 ```
+
+![run_command][img1.png]
