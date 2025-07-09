@@ -1,0 +1,7 @@
+Alice 253 84.3333 PASS
+Bob 246 82 PASS
+Charlie 270 90 PASS
+David 195 65 FAIL
+Eve 265 88.3333 PASS
+highest student:  Charlie 270
+lowest student:  David 195
