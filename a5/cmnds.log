@@ -1,0 +1,11 @@
+### importing dataset (inside current directory)
+
+pip install gdown
+/home/<user-name>/.local/bin/gdown 10vQrE-k6z1-sYTskMOlbld8LGCynZe1P
+
+### get the metadata
+
+awk -f metadata.awk data.cs
+
+###
+#
