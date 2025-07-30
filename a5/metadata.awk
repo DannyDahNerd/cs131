@@ -7,6 +7,13 @@ BEGIN {
 }
 
 {
+	if(NR == 1) {
+		for(i=1; i <= NF; i++) {
+			headers[i] = $i
+		}
+		next
+	}
+
 	if(NR > 1) {
 		val = $13  
 		data[count++] = val
@@ -21,10 +28,14 @@ END {
 	n = asort(data, sorted)
 	
 	p25 = sorted[int(0.25 * n)]
-	p50 = sorted[int(1.50 * n)]
+	p50 = sorted[int(0.50 * n)]
 	p75 = sorted[int(0.75 * n)]
 	
 	print "Number of entries: " count
+	print "====FEATURES===="
+	for(i=1; i<=length(headers); i++) {
+		print "\t" headers[i]
+	}
 	print "Admission grade (Scored 0-200)"
 	print "Mean: " (sum / count)
 	print "Min: " min
